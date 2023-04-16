@@ -1,0 +1,50 @@
+.profile__wrap{
+    font-family: 'Montserrat';
+    font-weight: 200;
+    font-size: 40px;
+    height: calc(100% - 50px);    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile__block{
+    display: flex;
+    align-items: center;
+}
+
+.profile__change-image-svg-wrap{
+    border-radius: 50%;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    background: white;
+    padding: 5px;
+}
+
+.profile__change-image-svg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgb(39, 138, 236);
+    height: 30px;
+    width: 30px;
+}
+
+.profile__block-left{
+    padding: 20px 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 1px;
+    background: white;
+    height: 100%;
+}
+
+.profile__block-right{
+    position: relative;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 1px;
+    background: white;
+}

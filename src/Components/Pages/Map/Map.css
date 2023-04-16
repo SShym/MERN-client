@@ -1,0 +1,9 @@
+.map-wrap{
+    letter-spacing: 2px;
+    font-size: 40px;
+    font-weight: bold;
+    height: calc(100% - 50px);    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
