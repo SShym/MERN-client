@@ -46,7 +46,7 @@ const Profile = () => {
             id: user.id
         }
 
-        dispatch(setUserAvatar(formData, setProfileLoading));
+        dispatch(setUserAvatar(formData, setProfileLoading, toast));
     };
 
     const handleAddNewSkill = (e) => {

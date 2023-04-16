@@ -115,7 +115,7 @@ const Navbar = () => {
                     transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >
-                    <MenuItem>
+                    <MenuItem onClick={() => setPage('profile')}>
                         <Avatar sx={{ height:32, width:32, cursor:'pointer' }} alt="user-avatar" src={user?.avatar}>
                             {user?.name[0]}
                         </Avatar>

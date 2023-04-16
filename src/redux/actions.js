@@ -86,7 +86,7 @@ export const addSkill = (skill, userId, toast, setProfileLoading) => async (disp
     dispatch({ type: ADD_SKILL, skill });
     toast.success('Successfully added');
   } catch (error) {
-    toast.error(error.response.data.error)
+    toast.error(error.response.data.error);
   } finally {
     setProfileLoading({ userSkill: false });
   }
@@ -130,7 +130,7 @@ export const googleAuth = (formData, navigate) => async (dispatch) => {
   }
 };
 
-export const setUserAvatar = (formData, setProfileLoading) => async (dispatch) => {
+export const setUserAvatar = (formData, setProfileLoading, toast) => async (dispatch) => {
   try {
     setProfileLoading({ userAvatar: true });
     const response = await API.post('/set-user-avatar', formData, {
@@ -144,8 +144,9 @@ export const setUserAvatar = (formData, setProfileLoading) => async (dispatch) =
       avatarId: response.data.user.avatarId,
       token: response.data.token
     }});
+    toast.success('Avatar successfully updated')
   } catch (error) {
-    console.log(error);
+    toast.error(error.response.data.error)
   } finally {
     setProfileLoading({ userAvatar: false });
   }
