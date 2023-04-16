@@ -2,7 +2,7 @@ import './Profile.css';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addSkill, getSkills, deleteSkill, setUserAvatar, changeUserName } from '../../../redux/actions';
-import { IconButton, TextField, Typography, Box, Button } from '@mui/material';
+import { IconButton, TextField, Typography, Box } from '@mui/material';
 import { toast } from 'react-hot-toast';
 import { Toaster } from 'react-hot-toast';
 import CloseIcon from '@mui/icons-material/Close';
@@ -16,21 +16,6 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import LinearProgress from '@mui/material/LinearProgress';
-import { createTheme } from '@mui/material/styles';
-
-const theme = createTheme({
-    components: {
-      MuiButton: {
-        styleOverrides: {
-          root: {
-            '&.Mui-disabled': {
-              bgcolor: 'unset', // сбросить цвет фона по умолчанию
-            },
-          },
-        },
-      },
-    },
-  });
 
 const Profile = () => {
     const [profileLoading, setProfileLoading] = useState({

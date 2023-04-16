@@ -54,21 +54,27 @@ export const auth = (formData) => (dispatch) => {
 
 export const registerNewUser = (data, navigate, toast) => async (dispatch) => {
   try {
+    dispatch(loaderOn());
     const response = await API.post('/register', data);
     dispatch({ type: AUTH, data: response.data });
     navigate('/');
   } catch (error) {
     toast.error(error.response.data.message)
+  } finally {
+    dispatch(loaderOff());
   }
 };
 
 export const loginUser = (data, navigate, toast) => async (dispatch) => {
   try {
+    dispatch(loaderOn());
     const response = await API.post('/login', data);
     dispatch({ type: AUTH, data: response.data });
     navigate('/');
   } catch (error) {
     toast.error(error.response.data.message)
+  } finally {
+    dispatch(loaderOff());
   }
 };
 
@@ -113,11 +119,14 @@ export const deleteSkill = (skill, toast, setProfileLoading) => async (dispatch)
 
 export const googleAuth = (formData, navigate) => async (dispatch) => {
   try {
+    dispatch(loaderOn());
     const response = await API.post('/google-auth', formData);
     dispatch({ type: AUTH, data: response.data });
     navigate('/');
   } catch (error) {
     console.log(error)
+  } finally {
+    dispatch(loaderOff());
   }
 };
 

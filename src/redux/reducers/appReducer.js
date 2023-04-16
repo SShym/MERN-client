@@ -7,7 +7,7 @@ import {
 
 const initialState = {
     error: null,
-    loading: false
+    loading: false,
 }
 
 export const appReducer = (state = initialState, action) => {

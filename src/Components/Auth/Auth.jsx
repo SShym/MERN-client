@@ -1,6 +1,6 @@
 import './Auth.css';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 import { googleAuth, loginUser, registerNewUser } from '../../redux/actions';
@@ -20,6 +20,8 @@ import AbcIcon from '@mui/icons-material/Abc';
 import GoogleIcon from '@mui/icons-material/Google';
 import { toast } from 'react-hot-toast';
 import { Toaster } from 'react-hot-toast';
+import LinearProgress from '@mui/material/LinearProgress';
+import Box from '@mui/material/Box';
 
 const Auth = () => {
     const [authMode, setAuthMode] = useState('login');
@@ -31,8 +33,7 @@ const Auth = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    // wait for the image to load and then load the information
- 
+    const loading = useSelector(state => state.appReducer.loading);
 
     useEffect(() => {
         reset();
@@ -164,12 +165,12 @@ const Auth = () => {
                                 <div onClick={() => setAuthMode('register')} className='auth-block__auth-mode'>
                                     Don't have an account?
                                 </div>
-                                <Button size="large" sx={{ mt: 1.5, mb: phoneAuth ? 3 : 0 }} fullWidth variant="contained" type="submit">Login</Button>
+                                <Button disabled={loading} size="large" sx={{ mt: 1.5, mb: phoneAuth ? 3 : 0 }} fullWidth variant="contained" type="submit">Login</Button>
                                 {!phoneAuth &&
                                     <GoogleLogin
                                         clientId={process.env.REACT_APP_GOOGLE_ID}
                                         render={(renderProps) => (
-                                            <button className='google-login-button' onClick={renderProps.onClick} disabled={renderProps.disabled} type="submit">
+                                            <button className='google-login-button' onClick={renderProps.onClick} disabled={renderProps.disabled || loading} type="submit">
                                                 <GoogleIcon sx={{ mr:1, fill:'white'}} />
                                                 Google Sign In
                                             </button>
@@ -302,7 +303,7 @@ const Auth = () => {
                                 <div onClick={() => setAuthMode('login')} className='auth-block__auth-mode'>
                                     Have an account?
                                 </div>
-                                <Button size="large" sx={{ mt: 1.5, mb: 2.5 }} fullWidth variant="contained" type="submit">Register</Button>
+                                <Button disabled={loading} size="large" sx={{ mt: 1.5, mb: 2.5 }} fullWidth variant="contained" type="submit">Register</Button>
                             </form>
                         }
                         <button onClick={() => { setPhoneAuth(!phoneAuth); setAuthMode('login')}} className='auth__auth-block-phone'>
@@ -314,6 +315,11 @@ const Auth = () => {
                         <span>Please {authMode === 'login' ? 'login' : 'register'} to continue with us!</span>
                     </div>
                 </div>
+                {loading &&
+                    <Box sx={{ width: '100%', position:'absolute', bottom:'5px' }}>
+                        <LinearProgress />
+                    </Box>
+                }
             </div>
             <Toaster
                 position="top-center"
