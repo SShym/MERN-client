@@ -7,7 +7,7 @@ body * {
 }
 
 body {
-  background-color: aliceblue;
+  background: rgba(199, 213, 250, 0.692);
 }
 
 .app-wrap {
