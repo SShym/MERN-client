@@ -72,32 +72,42 @@ export const loginUser = (data, navigate, toast) => async (dispatch) => {
   }
 };
 
-export const addSkill = (skill, userId, toast) => async (dispatch) => {
+export const addSkill = (skill, userId, toast, setProfileLoading) => async (dispatch) => {
   try {
+    setProfileLoading({ userSkill: true });
     await API.post('/add-skill', { skill, userId });
+
     dispatch({ type: ADD_SKILL, skill });
     toast.success('Successfully added');
   } catch (error) {
     toast.error(error.response.data.error)
+  } finally {
+    setProfileLoading({ userSkill: false });
   }
 };
 
 export const getSkills = (userId) => async (dispatch) => {
   try {
+    dispatch(loaderOn());
     const response = await API.get(`/user-skills/${userId}`);
     dispatch({ type: GET_SKILLS, skills: response.data });
+    dispatch(loaderOff());
   } catch (error) {
     console.log(error)
   }
 };
 
-export const deleteSkill = (skill, toast) => async (dispatch) => {
+export const deleteSkill = (skill, toast, setProfileLoading) => async (dispatch) => {
   try {
+    setProfileLoading({ userSkill: true });
     await API.patch('/delete-skill', { skill });
+
     dispatch({ type: DELETE_SKILL, skill });
     toast.success('Successfully deleted');
   } catch (error) {
-    toast.error(error.response.data.error)
+    toast.error(error.response.data.error);
+  } finally {
+    setProfileLoading({ userSkill: false });
   }
 };
 
@@ -132,9 +142,9 @@ export const setUserAvatar = (formData) => async (dispatch) => {
   }
 };
 
-export const changeUserName = (userName, userId, toast) => async (dispatch) => {
+export const changeUserName = (userName, userId, toast, setProfileLoading) => async (dispatch) => {
   try {
-    dispatch(loaderOn());
+    setProfileLoading({ userName: true });
     const response = await API.put('/change-user-name', { userName, userId });
     
     dispatch({ type: CHANGE_USER_NAME, data: {
@@ -142,8 +152,9 @@ export const changeUserName = (userName, userId, toast) => async (dispatch) => {
       token: response.data.token
     }});
 
-    dispatch(loaderOff());
   } catch (error) {
     toast.error(error.response.data.error)
+  } finally {
+    setProfileLoading({ userName: false });
   }
 }
