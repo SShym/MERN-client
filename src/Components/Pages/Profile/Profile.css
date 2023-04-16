@@ -52,6 +52,16 @@
     background: white;
 }
 
+.profile__block-avatar-skeleton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    border: 1px solid gray;
+}
+
 .profile__save-name-btn{
     display: flex;
     align-items: center;
@@ -61,8 +71,8 @@
     color: rgb(226, 226, 226);
     box-shadow: 0px 0px 1px black;
     font-weight: 600;
-    font-size: 19px;
+    font-size: 16px;
     margin-top: 5px;
     border-radius: 5px;
-    padding: 3px 15px;
+    padding: 5px 15px;
 }

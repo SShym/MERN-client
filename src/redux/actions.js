@@ -130,9 +130,9 @@ export const googleAuth = (formData, navigate) => async (dispatch) => {
   }
 };
 
-export const setUserAvatar = (formData) => async (dispatch) => {
+export const setUserAvatar = (formData, setProfileLoading) => async (dispatch) => {
   try {
-    dispatch(loaderOn());
+    setProfileLoading({ userAvatar: true });
     const response = await API.post('/set-user-avatar', formData, {
       headers: {
           'Content-Type': 'multipart/form-data'
@@ -144,10 +144,10 @@ export const setUserAvatar = (formData) => async (dispatch) => {
       avatarId: response.data.user.avatarId,
       token: response.data.token
     }});
-    
-    dispatch(loaderOff());
   } catch (error) {
-    console.log(error)
+    console.log(error);
+  } finally {
+    setProfileLoading({ userAvatar: false });
   }
 };
 

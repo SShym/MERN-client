@@ -20,10 +20,10 @@ import LinearProgress from '@mui/material/LinearProgress';
 const Profile = () => {
     const [profileLoading, setProfileLoading] = useState({
         userName: false,
-        userSkill: false
+        userSkill: false,
+        userAvatar : false,
     });
     
-    const [base64Avatar, setBase64Avatar] = useState(null);
     const [userName, setUserName] = useState('');
     const [skill, setSkill] = useState('');
 
@@ -40,20 +40,13 @@ const Profile = () => {
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
-        const reader = new FileReader();
-                
-        reader.onload = (event) => {
-            setBase64Avatar(event.target.result);
-        };
-
-        reader.readAsDataURL(file);
 
         const formData = {
             photo: file,
             id: user.id
         }
 
-        dispatch(setUserAvatar(formData));
+        dispatch(setUserAvatar(formData, setProfileLoading));
     };
 
     const handleAddNewSkill = (e) => {
@@ -80,7 +73,9 @@ const Profile = () => {
     return(
         <div className='profile__wrap'>
             {loading 
-                ? <CircularProgress color="primary" />
+                ? <Box>
+                    <CircularProgress color="primary" />
+                </Box>
                 : <>
                     {user && skills &&
                         <>
@@ -93,11 +88,25 @@ const Profile = () => {
                             <div className='profile__block'>
                                 <div className='profile__block-left'>
                                     <IconButton sx={{ display:'flex', flexDirection:'column', position:'relative' }} component="label" htmlFor="photo">
-                                        <Avatar src={base64Avatar ? base64Avatar : user?.avatar} sx={{ border:'1px solid rgb(0,0,0, 0.15)', fontSize:'25px', width: 130, height: 130 }}>{user?.name[0]}</Avatar>
+                                        <Avatar 
+                                            src={user?.avatar} 
+                                            sx={{ 
+                                                border:'1px solid rgb(0,0,0, 0.15)', 
+                                                fontSize:'25px', 
+                                                width: 130, 
+                                                height: 130 
+                                            }}>
+                                                {user?.name[0]}
+                                        </Avatar>
                                         <Input disabled={profileDisabled} type="file" name="photo" id="photo" onChange={handleFileChange} sx={{ display: 'none' }} disableUnderline />
                                         <Box className="profile__change-image-svg-wrap">
                                             <Box className="profile__change-image-svg">
-                                                <CameraAlt sx={{ fill: 'white', width:18, height:18 }} />
+                                                {profileLoading.userAvatar 
+                                                    ? <Box sx={{ color:'white', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                                                        <CircularProgress color="inherit" size={16} />
+                                                    </Box>
+                                                    : <CameraAlt sx={{ fill: 'white', width:18, height:18 }} />
+                                                }
                                             </Box>
                                         </Box>
                                     </IconButton>
@@ -119,7 +128,7 @@ const Profile = () => {
                                                 className='profile__save-name-btn'
                                             >
                                                 {profileLoading.userName
-                                                    ? <CircularProgress size={15} color="inherit" sx={{margin:'4px'}} />
+                                                    ? <CircularProgress size={11} color="inherit" sx={{margin:'4px'}} />
                                                     : 'Save'
                                                 }
                                             </button>

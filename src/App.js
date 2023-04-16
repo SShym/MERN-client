@@ -1,11 +1,11 @@
 import './App.css';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Routes, useNavigate  } from 'react-router-dom';
 
 import Main from './Components/Main/Main';
 import Auth from './Components/Auth/Auth';
 import Error from './Components/Error/Error';
-import { useEffect } from 'react';
 
 function App() { 
   const user = useSelector(state => state.userReducer.user); 
@@ -22,7 +22,7 @@ function App() {
       <div className="app-wrap">
           <Routes>
             <Route path='/' element={<Main />} />
-          <Route path='/auth' element={<Auth />} />
+            <Route path='/auth' element={<Auth />} />
             <Route path='*' element={<Error />} />
           </Routes>
           {error && <Error />}

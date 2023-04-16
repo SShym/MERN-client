@@ -14,8 +14,10 @@ const initialState = {
 export const mainReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_PAGE:   
-            localStorage.setItem('page', action.page);
-            
+            action.page 
+                ? localStorage.setItem('page', action.page)
+                : localStorage.removeItem('page');
+           
             return { 
                 ...state, 
                 page: action.page

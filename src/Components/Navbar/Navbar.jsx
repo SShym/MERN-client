@@ -44,8 +44,10 @@ const Navbar = () => {
 
     const setPage = (page) => {
         dispatch({ type: SET_PAGE, page });
-        setIsDrawerOpen(!isDrawerOpen)
+        setIsDrawerOpen(false);
     }
+
+    const backHome = () => dispatch({ type: SET_PAGE, page: null });
     
     return (
         <Box >
@@ -60,7 +62,7 @@ const Navbar = () => {
                     >
                         <MenuIcon onClick={toggleDrawer} sx={{ width:26, height:26 }}/>
                     </IconButton>
-                    <Typography variant="h5" component="div" sx={{ fontFamily:'Montserrat', userSelect:'none', flexGrow: 1, fontSize:'17px' }}>
+                    <Typography onClick={backHome} variant="h5" component="div" sx={{ cursor:'pointer', fontFamily:'Montserrat', userSelect:'none', flexGrow: 1, fontSize:'17px' }}>
                         Dark mall
                     </Typography>
                     <Typography omponent="div" sx={{ fontFamily:'Roboto Mono', mr: 1.5, fontSize:'16px', userSelect:'none', letterSpacing:'-1px' }}>
@@ -113,34 +115,34 @@ const Navbar = () => {
                     transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 >
-                <MenuItem>
-                    <Avatar sx={{ height:32, width:32, cursor:'pointer' }} alt="user-avatar" src={user?.avatar}>
-                        {user?.name[0]}
-                    </Avatar>
-                    <Typography sx={{fontFamily:'Roboto Mono', fontSize:'16px', ml: 1, letterSpacing:'-1px'}}>
-                        {user?.name}
-                    </Typography>
-                </MenuItem>
-                <Divider />
-                <MenuItem>
-                    <ListItemIcon>
-                        <PersonAdd fontSize="small" />
-                    </ListItemIcon>
-                    Add another account
+                    <MenuItem>
+                        <Avatar sx={{ height:32, width:32, cursor:'pointer' }} alt="user-avatar" src={user?.avatar}>
+                            {user?.name[0]}
+                        </Avatar>
+                        <Typography sx={{fontFamily:'Roboto Mono', fontSize:'16px', ml: 1, letterSpacing:'-1px'}}>
+                            {user?.name}
+                        </Typography>
                     </MenuItem>
-                <MenuItem>
-                    <ListItemIcon>
-                        <Settings fontSize="small" />
-                    </ListItemIcon>
-                    Settings
+                    <Divider />
+                    <MenuItem>
+                        <ListItemIcon>
+                            <PersonAdd fontSize="small" />
+                        </ListItemIcon>
+                        Add another account
                     </MenuItem>
-                <MenuItem onClick={handleLogout}>
-                    <ListItemIcon>
-                        <Logout fontSize="small" />
-                    </ListItemIcon>
-                    Logout
-                </MenuItem>
-            </Menu>
+                    <MenuItem onClick={() => setPage('settings')}>
+                        <ListItemIcon>
+                            <Settings fontSize="small" />
+                        </ListItemIcon>
+                        Settings
+                    </MenuItem>
+                    <MenuItem onClick={handleLogout}>
+                        <ListItemIcon>
+                            <Logout fontSize="small" />
+                        </ListItemIcon>
+                        Logout
+                    </MenuItem>
+                </Menu>
             </AppBar>
             <Drawer open={isDrawerOpen} onClose={toggleDrawer}>
                 <Box role="presentation">
