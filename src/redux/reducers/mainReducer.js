@@ -1,8 +1,8 @@
 import { 
     SET_PAGE,
-    REMOVE_PAGE,
-    GET_SKILLS,
     ADD_SKILL,
+    GET_SKILLS,
+    REMOVE_PAGE,
     DELETE_SKILL,
 } from '../actions';
 

@@ -1,17 +1,17 @@
 import axios from 'axios';
+export const AUTH = 'AUTH';
+export const LOGOUT = 'LOGOUT';
+export const SET_PAGE = 'SET_PAGE';
+export const ADD_SKILL = 'ADD_SKILL';
+export const GET_SKILLS = 'GET_SKILLS';
+export const REMOVE_PAGE = 'REMOVE_PAGE';
+export const DELETE_SKILL = 'DELETE_SKILL';
+export const SET_NEW_AVATAR = 'SET_NEW_AVATAR';
+export const CHANGE_USER_NAME = 'CHANGE_USER_NAME';
 export const ERROR_DISPLAY_ON = 'ERROR_DISPLAY_ON';
 export const ERROR_DISPLAY_OFF = 'ERROR_DISPLAY_OFF';
 export const LOADER_DISPLAY_ON = 'LOADER_DISPLAY_ON';
 export const LOADER_DISPLAY_OFF = 'LOADER_DISPLAY_OFF';
-export const SET_PAGE = 'SET_PAGE';
-export const GET_SKILLS = 'GET_SKILLS';
-export const ADD_SKILL = 'ADD_SKILL';
-export const SET_NEW_AVATAR = 'SET_NEW_AVATAR';
-export const CHANGE_USER_NAME = 'CHANGE_USER_NAME';
-export const DELETE_SKILL = 'DELETE_SKILL';
-export const REMOVE_PAGE = 'REMOVE_PAGE';
-export const AUTH = 'AUTH';
-export const LOGOUT = 'LOGOUT';
 
 const API = axios.create({ 
   // baseURL: 'http://localhost:5000'
