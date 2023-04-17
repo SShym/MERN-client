@@ -14,8 +14,8 @@ export const AUTH = 'AUTH';
 export const LOGOUT = 'LOGOUT';
 
 const API = axios.create({ 
-  // baseURL: 'http://localhost:5000'
-  baseURL: 'https://where-kids.cyclic.app'
+  baseURL: 'http://localhost:5000'
+  // baseURL: 'https://where-kids.cyclic.app'
 });
 
 API.interceptors.request.use((req) => {
@@ -44,14 +44,6 @@ export function loaderOff(){
   }
 }
 
-export const auth = (formData) => (dispatch) => {
-    try {
-      dispatch({ type: AUTH, data: formData });
-    } catch (error) {
-      dispatch(errorOn(error.response.status));
-    }
-};
-
 export const registerNewUser = (data, navigate, toast) => async (dispatch) => {
   try {
     dispatch(loaderOn());
@@ -65,10 +57,56 @@ export const registerNewUser = (data, navigate, toast) => async (dispatch) => {
   }
 };
 
+export const registerNewUserViaPhone = (data, navigate, toast) => async (dispatch) => {
+  try {
+    dispatch(loaderOn());
+    const response = await API.post('/register-via-phone', data);
+    dispatch({ type: AUTH, data: response.data });
+    navigate('/');
+  } catch (error) {
+    toast.error(error.response.data.message)
+  } finally {
+    dispatch(loaderOff());
+  }
+};
+
+export const sendSMS = (phoneNumber, toast, setVerificationCode, setVerifyMode, authMode) => async (dispatch) => {
+  try {
+    dispatch(loaderOn());
+
+    const response = await API.post('/send-verify-code', { 
+      phone: phoneNumber,
+      authMode: authMode.mode
+    });
+
+    setVerificationCode(response.data.code);
+    setVerifyMode(true);
+
+    toast.success('Message sent successfully!');
+  } catch (error) {
+    toast.error(error.response.data.message)
+  } finally {
+    dispatch(loaderOff());
+  }
+}
+
 export const loginUser = (data, navigate, toast) => async (dispatch) => {
   try {
     dispatch(loaderOn());
     const response = await API.post('/login', data);
+    dispatch({ type: AUTH, data: response.data });
+    navigate('/');
+  } catch (error) {
+    toast.error(error.response.data.message)
+  } finally {
+    dispatch(loaderOff());
+  }
+};
+
+export const loginUserViaPhone = (phoneNumber, navigate, toast) => async (dispatch) => {
+  try {
+    dispatch(loaderOn());
+    const response = await API.post('/login-via-phone', { phone: phoneNumber});
     dispatch({ type: AUTH, data: response.data });
     navigate('/');
   } catch (error) {
@@ -141,7 +179,6 @@ export const setUserAvatar = (formData, setProfileLoading, toast) => async (disp
 
     dispatch({ type: SET_NEW_AVATAR, data: {
       avatar: response.data.user.avatar,
-      avatarId: response.data.user.avatarId,
       token: response.data.token
     }});
     toast.success('Avatar successfully updated')

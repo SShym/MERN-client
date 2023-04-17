@@ -136,35 +136,35 @@ const Profile = () => {
                                     </form>
                                 </div>
                                 <div className='profile__block-right'>
-                                <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                                    <Box sx={{ my: 3, mx: 2 }}>
-                                        <Grid container alignItems="center">
-                                        <Grid item xs>
-                                            <Typography className='profile__block-right-email' gutterBottom variant="h4" component="div">
-                                                {user?.email}
+                                    <Box sx={{ width: '100%', maxWidth: 350, bgcolor: 'background.paper' }}>
+                                        <Box sx={{ my: 3, mx: 2 }}>
+                                            <Grid container alignItems="center">
+                                            <Grid item xs>
+                                                <Typography className='profile__block-right-email' gutterBottom variant="h4" component="div">
+                                                    {user?.email || user?.phone}
+                                                </Typography>
+                                            </Grid>
+                                            </Grid>
+                                            <Typography color="text.secondary" variant="body2">
+                                                Walking is a great way to get some exercise and fresh air, 
+                                                and it's also a great way to clear your head.
                                             </Typography>
-                                        </Grid>
-                                        </Grid>
-                                        <Typography color="text.secondary" variant="body2">
-                                            Pinstriped cornflower blue cotton blouse takes you on a walk to the park or
-                                            just down the hall.
-                                        </Typography>
-                                    </Box>
-                                    <Divider variant="middle" />
-                                    <form onSubmit={(e) => handleAddNewSkill(e)} style={{ margin:'15px', display:'flex', alignItems:'center'}}>
-                                        <TextField
-                                            disabled={profileDisabled}
-                                            value={skill}
-                                            inputProps={{ maxLength: 20 }}
-                                            onChange={(e) => setSkill(e.target.value)}
-                                            sx={{ mr:0.5, width:'100%' }}
-                                            id="demo-helper-text-misaligned"
-                                            label="Add your skill"
-                                        />
-                                        <button type="submit" style={{ display:'flex', alignItems:'center' }}>
-                                            <AddCircleIcon color="primary" sx={{ width:40, height:40, cursor:'pointer' }} />
-                                        </button>
-                                    </form>
+                                        </Box>
+                                        <Divider variant="middle" />
+                                        <form onSubmit={(e) => handleAddNewSkill(e)} style={{ margin:'15px', display:'flex', alignItems:'center'}}>
+                                            <TextField
+                                                disabled={profileDisabled}
+                                                value={skill}
+                                                inputProps={{ maxLength: 20 }}
+                                                onChange={(e) => setSkill(e.target.value)}
+                                                sx={{ mr:0.5, width:'100%' }}
+                                                id="demo-helper-text-misaligned"
+                                                label="Add your skill"
+                                            />
+                                            <button type="submit" style={{ display:'flex', alignItems:'center' }}>
+                                                <AddCircleIcon color="primary" sx={{ width:40, height:40, cursor:'pointer' }} />
+                                            </button>
+                                        </form>
                                         {skills?.length > 0 &&
                                             <Box sx={{ m: 2 }}>
                                                 <Typography sx={{ mb:1, fontFamily:'Montserrat', fontWeight:'600', fontSize:'13px' }}>

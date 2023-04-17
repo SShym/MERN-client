@@ -53,18 +53,20 @@ const Navbar = () => {
         <Box >
             <AppBar sx={{ display:'flex', justifyContent:'center', height: '50px', width:'100%' }} position="static">
                 <Toolbar>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="menu"
-                        sx={{ mr: 2 }}
-                    >
-                        <MenuIcon onClick={toggleDrawer} sx={{ width:26, height:26 }}/>
-                    </IconButton>
-                    <Typography onClick={backHome} variant="h5" component="div" sx={{ cursor:'pointer', fontFamily:'Montserrat', userSelect:'none', flexGrow: 1, fontSize:'17px' }}>
-                        Dark mall
-                    </Typography>
+                    <Box sx={{ display:'flex', alignItems:'center', flexGrow: 1 }}>
+                        <IconButton
+                            size="large"
+                            edge="start"
+                            color="inherit"
+                            aria-label="menu"
+                            sx={{ mr: 1 }}
+                        >
+                            <MenuIcon onClick={toggleDrawer} sx={{ width:26, height:26 }}/>
+                        </IconButton>
+                        <Typography onClick={backHome} variant="h5" component="div" sx={{ border:'1px solid', cursor:'pointer', fontFamily:'Montserrat', userSelect:'none', fontSize:'17px', padding:'5px 15px', borderRadius:'15px', transition: 'all 0.3s', '&:hover': { opacity: '0.5' } }}>
+                            Dark Mall
+                        </Typography>
+                    </Box>
                     <Typography omponent="div" sx={{ fontFamily:'Roboto Mono', mr: 1.5, fontSize:'16px', userSelect:'none', letterSpacing:'-1px' }}>
                         {user?.name}
                     </Typography>

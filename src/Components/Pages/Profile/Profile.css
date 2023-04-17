@@ -12,25 +12,6 @@
     align-items: center;
 }
 
-.profile__change-image-svg-wrap{
-    border-radius: 50%;
-    position: absolute;
-    right: 5px;
-    bottom: 5px;
-    background: white;
-    padding: 5px;
-}
-
-.profile__change-image-svg{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: rgb(39, 138, 236);
-    height: 30px;
-    width: 30px;
-}
-
 .profile__block-left{
     display: flex;
     flex-direction: column;
@@ -48,6 +29,25 @@
     border-radius: 5px;
     box-shadow: 0px 0px 1px;
     background: white;
+}
+
+.profile__change-image-svg-wrap{
+    border-radius: 50%;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    background: white;
+    padding: 5px;
+}
+
+.profile__change-image-svg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgb(39, 138, 236);
+    height: 30px;
+    width: 30px;
 }
 
 .profile__block-avatar-skeleton{

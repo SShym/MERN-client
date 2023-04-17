@@ -20,6 +20,7 @@ export const userReducer = (state = initialState, action) => {
         
         case LOGOUT: 
             localStorage.removeItem('profile');
+            
             return { 
                 ...state,
                 user: null, 
