@@ -57,8 +57,7 @@ const Auth = () => {
                 email: data.profileObj.email,
                 name: data.profileObj.name,
                 avatar: data.profileObj.imageUrl
-            },
-            token: data.tokenId
+            }
         }
 
         dispatch(googleAuth(formData, navigate));
