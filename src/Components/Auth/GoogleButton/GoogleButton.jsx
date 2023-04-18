@@ -30,7 +30,7 @@ const GoogleButton = () => {
                 clientId={process.env.REACT_APP_GOOGLE_ID}
                 render={(renderProps) => (
                     <button className='google-login-button' onClick={renderProps.onClick} disabled={renderProps.disabled || loading} type="submit">
-                        <GoogleIcon sx={{ mr:1, fill:'white'}} />
+                        <GoogleIcon sx={{ mr: 1, fill:'white'}} />
                         Google Sign In
                     </button>
                 )}

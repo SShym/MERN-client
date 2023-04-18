@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { loginUser, registerNewUser, registerNewUserViaPhone, loginUserViaPhone, sendSMS } from '../../redux/actions';
 import { toast } from 'react-hot-toast';
 import { Toaster } from 'react-hot-toast';
+import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
 import background from '../../images/authBackground.jpg';
 import Button from '@mui/material/Button';
 import LinearProgress from '@mui/material/LinearProgress';
@@ -171,7 +172,8 @@ const Auth = () => {
                             }} 
                             className='auth__auth-block-phone'
                         >
-                            {authMode.option === 'phone' ? 'email' : 'phone'} auth
+                            {authMode.option === 'phone' ? 'Email' : 'Phone'}
+                            <ArrowRightAltOutlinedIcon sx={{ ml:1 }} />
                         </button>
                     </div>
                     <div className='auth__auth-block-right'>

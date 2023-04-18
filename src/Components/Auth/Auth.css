@@ -27,6 +27,9 @@
 }
 
 .auth__auth-block-phone{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: rgb(236, 231, 223);
     position: absolute;
     font-size: 15px;
