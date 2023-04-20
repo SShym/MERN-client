@@ -5,7 +5,7 @@ import AlarmOutlinedIcon from '@mui/icons-material/AlarmOutlined';
 import introImg from '../../../images/intro-img.svg';
 import aboutImg from '../../../images/about-img.svg';
 import aboutExtra from '../../../images/about-extra-1.svg';
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 const Body = () => {
     return(

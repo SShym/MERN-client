@@ -1,4 +1,5 @@
 import './App.css';
+
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Routes, useNavigate  } from 'react-router-dom';
@@ -25,16 +26,16 @@ function App() {
   return (
     <div className="app">
       <div className="app-wrap">
-          {user && <Navbar />}
-          <Routes>
-            <Route path='/settings' element={<Settigns />} />
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/' element={<Body />} />
-            <Route path='/map' element={<Map />} />
-            <Route path='/auth' element={<Auth />} />
-            <Route path='*' element={<Error />} />
-          </Routes>
-          {error && <Error />}
+        {user && <Navbar />}
+        <Routes>
+          {user && <Route path='/settings' element={<Settigns />} />}
+          {user &&<Route path='/profile' element={<Profile />} /> }
+          {user && <Route path='/' element={<Body />} /> }
+          {user && <Route path='/map' element={<Map />} /> }
+          {!user && <Route path='/auth' element={<Auth />} />}
+          <Route path='*' element={<Error />} />
+        </Routes>
+        {error && <Error />}
       </div>
     </div>
   );

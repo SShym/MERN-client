@@ -76,14 +76,14 @@ const Auth = () => {
                 <div className='auth__auth-block'>   
                     <div className='auth__auth-block-left'>
                         {authMode.mode === 'login'
-                            ? <form autocomplete="off" onSubmit={handleSubmit(onSubmit)}>
+                            ? <form onSubmit={handleSubmit(onSubmit)}>
                                 {authMode.option === 'phone' 
                                     ? <div>
                                         <Phone register={register} errors={errors} />  
                                         {!verifyMode &&
                                             <Button 
                                                 onClick={handleSubmit(handleSendSMS)}
-                                                sx={{ mt: 1.5, mb: 3 }}
+                                                sx={{ mt: 1.5, mb: 3, fontFamily:'Montserrat' }}
                                                 disabled={loading} 
                                                 size="large" 
                                                 fullWidth 
@@ -111,7 +111,7 @@ const Auth = () => {
                                 }
 
                                 {(verifyMode || authMode.option === 'email') &&
-                                    <Button disabled={loading} size="large" sx={{ mt: 1.5, mb: authMode.option === 'phone' ? 3 : 0 }} fullWidth variant="contained" type="submit">
+                                    <Button disabled={loading} size="large" sx={{ fontFamily:'Montserrat', letterSpacing:'0.7px', mt: 1.5, mb: authMode.option === 'phone' ? 3 : 0 }} fullWidth variant="contained" type="submit">
                                         Login
                                     </Button>
                                 }                     
@@ -122,7 +122,7 @@ const Auth = () => {
                                     Don't have an account?
                                 </div>
                             </form>
-                            : <form autocomplete="off" onSubmit={handleSubmit(onSubmit)}>
+                            : <form onSubmit={handleSubmit(onSubmit)}>
                                 {authMode.option === 'phone' 
                                     ? <Phone register={register} errors={errors} />
                                     : <Email register={register} errors={errors} />
@@ -137,7 +137,7 @@ const Auth = () => {
                                 {(!verifyMode && authMode.option === 'phone') &&
                                     <Button 
                                         onClick={handleSubmit(handleSendSMS)}
-                                        sx={{ mt: 1.5, mb: 3 }}
+                                        sx={{ mt: 1.5, mb: 3, fontFamily:'Montserrat' }}
                                         disabled={loading} 
                                         size="large" 
                                         fullWidth 
@@ -153,7 +153,7 @@ const Auth = () => {
                                 }
 
                                 {(verifyMode || authMode.option === 'email') &&
-                                    <Button disabled={loading} size="large" sx={{ mt: 1.5, mb: 2.5 }} fullWidth variant="contained" type="submit">
+                                    <Button disabled={loading} size="large" sx={{ fontFamily:'Montserrat', letterSpacing:'0.8px', mt: 1.5, mb: 2.5 }} fullWidth variant="contained" type="submit">
                                         Register
                                     </Button>
                                 }

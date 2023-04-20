@@ -29,7 +29,7 @@ const Verification = ({ register, errors }) => {
             {errors?.verificationCode &&
                 <div className='auth-block__input-error'>
                     {errors?.verificationCode?.type === 'required' && <div>Code is required</div>}
-                    {errors?.verificationCode?.type === 'minLength' && <div>Code must be 6 characters</div>}
+                    {errors?.verificationCode?.type === 'minLength' && <div>Must be 6 characters</div>}
                 </div>
             }
         </>
