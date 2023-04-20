@@ -14,8 +14,8 @@ export const LOADER_DISPLAY_ON = 'LOADER_DISPLAY_ON';
 export const LOADER_DISPLAY_OFF = 'LOADER_DISPLAY_OFF';
 
 const API = axios.create({ 
-  baseURL: 'http://localhost:5000'
-  // baseURL: 'https://where-kids.cyclic.app'
+  // baseURL: 'http://localhost:5000'
+  baseURL: 'https://where-kids.cyclic.app'
 });
 
 API.interceptors.request.use((req) => {
