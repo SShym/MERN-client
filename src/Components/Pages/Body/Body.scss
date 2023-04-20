@@ -11,8 +11,13 @@
 
     .intro-img{
         img{
+            transition: all 0.5s;
             width: 100%;
             max-width: 500px;
+
+            &:hover{
+                transform: translateY(-10px);
+            }
         }
     }
     
@@ -102,8 +107,13 @@
             .about-body__info-img{
                 width: 100%;
                 img{
+                    transition: all 0.5s;
                     width: 100%;
                     max-width: 450px;
+                    
+                    &:hover{
+                        transform: translateY(-10px);
+                    }
                 }
             }
 
@@ -165,11 +175,17 @@
 
             .about-body__info-2-img{
                 width: 100%;
+                margin-right: 55px;
+
                 img{
+                    transition: all 0.5s;
                     width: 100%;
                     max-width: 500px;
+
+                    &:hover{
+                        transform: translateY(-10px);
+                    }
                 }
-                margin-right: 55px;
             }
             .about-body__info-2-text{
                 h1{
@@ -193,24 +209,29 @@
         height: 100%;
         align-items: center;
         flex-direction: column;
+
         .intro-info{
             margin-right: 0;
             text-align: center;
             order: 1;
             padding: 10px;
+
             .intro-buttons{
                 display: flex;
                 flex-direction: column;
             }
+
             .intro-buttons button{
                 border: 1px solid;
+                margin: 0;
+                border: 1px solid;
+
                 &:first-child{
                     margin: 10px;
                 }
-                margin: 0;
-                border: 1px solid;
             }
         }
+
         .intro-img{
             padding: 25px;
         }
@@ -222,12 +243,16 @@
             flex-direction: column;
         }
     
-            .about-body__info-2-img, .about-body__info-img{
-                margin: 35px auto;
-                display: flex;
-                justify-content: center;
-                order: 2;
-            }
+        .about-body__info-2-img, .about-body__info-img{
+            margin: 35px auto;
+            display: flex;
+            justify-content: center;
+            order: 2;
+        }
+
+        .about-body__info-2-img{
+            margin-top: 55px;
+        }
     }
 }
 

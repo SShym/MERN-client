@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .profile__block{
@@ -78,7 +79,7 @@
 
 @media (min-width: 576px) {
     .profile__wrap{
-        height: calc(100% - 50px);    
+        height: calc(100vh - 50px);    
     }
 }
 

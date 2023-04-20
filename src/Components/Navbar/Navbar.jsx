@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { LOGOUT, SET_PAGE, REMOVE_PAGE } from '../../redux/actions';
+import { useNavigate } from 'react-router-dom';
+import { LOGOUT } from '../../redux/actions';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -32,28 +33,27 @@ const Navbar = () => {
     const user = useSelector(state => state.userReducer.user);
     const matches = useMediaQuery('(max-width:576px)');
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const open = Boolean(anchorEl);
 
     const handleClick = (event) => setAnchorEl(event.currentTarget);
+
     const handleClose = () => setAnchorEl(null);
 
-    const handleLogout = () => {
-        dispatch({ type: LOGOUT });
-        dispatch({ type: REMOVE_PAGE });
-    }
+    const handleLogout = () => dispatch({ type: LOGOUT });
 
     const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
 
     const setPage = (page) => {
-        dispatch({ type: SET_PAGE, page });
+        navigate(`/${page}`);
         setIsDrawerOpen(false);
     }
 
-    const backHome = () => dispatch({ type: SET_PAGE, page: null });
+    const backHome = () => navigate('/');
     
     return (
-        <Box sx={{ position:'fixed', zIndex:1, width:'100%', padding: '0px 15px' }}>
-            <AppBar sx={{ borderRadius:'50px', display:'flex', justifyContent:'center', height: '50px', width:'100%' }} position="static">
+        <Box sx={{ position: 'fixed', width: '100vw', zIndex: 999 }}>
+            <AppBar sx={{ display:'flex', justifyContent:'center', height: '50px', width:'100%' }} position="static">
                 <Toolbar>
                     <Box sx={{ display:'flex', alignItems:'center', flexGrow: 1 }}>
                         <IconButton
@@ -95,7 +95,7 @@ const Navbar = () => {
                     sx: {
                         overflow: 'visible',
                         filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                        mt: 1.5,
+                        mt: 1.8,
                         '& .MuiAvatar-root': {
                             width: 32,
                             height: 32,

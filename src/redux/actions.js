@@ -1,10 +1,8 @@
 import axios from 'axios';
 export const AUTH = 'AUTH';
 export const LOGOUT = 'LOGOUT';
-export const SET_PAGE = 'SET_PAGE';
 export const ADD_SKILL = 'ADD_SKILL';
 export const GET_SKILLS = 'GET_SKILLS';
-export const REMOVE_PAGE = 'REMOVE_PAGE';
 export const DELETE_SKILL = 'DELETE_SKILL';
 export const SET_NEW_AVATAR = 'SET_NEW_AVATAR';
 export const CHANGE_USER_NAME = 'CHANGE_USER_NAME';
