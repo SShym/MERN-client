@@ -14,8 +14,8 @@ export const LOADER_DISPLAY_ON = 'LOADER_DISPLAY_ON';
 export const LOADER_DISPLAY_OFF = 'LOADER_DISPLAY_OFF';
 
 const API = axios.create({ 
-  // baseURL: 'http://localhost:5000'
-  baseURL: 'https://where-kids.cyclic.app'
+  baseURL: 'http://localhost:5000'
+  // baseURL: 'https://where-kids.cyclic.app'
 });
 
 API.interceptors.request.use((req) => {
@@ -181,7 +181,7 @@ export const setUserAvatar = (formData, setProfileLoading, toast) => async (disp
       avatar: response.data.user.avatar,
       token: response.data.token
     }});
-    toast.success('Avatar successfully updated')
+    toast.success('Successfully changed')
   } catch (error) {
     toast.error(error.response.data.error)
   } finally {
@@ -199,6 +199,7 @@ export const changeUserName = (userName, userId, toast, setProfileLoading) => as
       token: response.data.token
     }});
 
+    toast.success('Changed successfully!');
   } catch (error) {
     toast.error(error.response.data.error)
   } finally {

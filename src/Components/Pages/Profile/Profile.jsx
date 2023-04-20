@@ -194,7 +194,7 @@ const Profile = () => {
                                 toastOptions={{
                                     style: {
                                         fontSize: '16px',
-                                        fontWeight: 'bold'
+                                        fontWeight: '400'
                                     },
                                 }}
                             />
