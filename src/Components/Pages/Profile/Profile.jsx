@@ -167,7 +167,7 @@ const Profile = () => {
                                         </form>
                                         {skills?.length > 0 &&
                                             <Box sx={{ m: 2 }}>
-                                                <Typography sx={{ mb:1, fontFamily:'Montserrat', fontWeight:'600', fontSize:'13px' }}>
+                                                <Typography sx={{ mb:1, fontFamily:'Montserrat', fontWeight:'400', fontSize:'13px' }}>
                                                     Skills:
                                                 </Typography>
                                                 <Stack direction="row" sx={{ display:'flex', alignItems:'center', flexWrap:'wrap'}}>

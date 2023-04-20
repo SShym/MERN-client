@@ -23,12 +23,14 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import Tooltip from '@mui/material/Tooltip';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Navbar = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
 
     const user = useSelector(state => state.userReducer.user);
+    const matches = useMediaQuery('(max-width:576px)');
     const dispatch = useDispatch();
     const open = Boolean(anchorEl);
 
@@ -50,8 +52,8 @@ const Navbar = () => {
     const backHome = () => dispatch({ type: SET_PAGE, page: null });
     
     return (
-        <Box >
-            <AppBar sx={{ display:'flex', justifyContent:'center', height: '50px', width:'100%' }} position="static">
+        <Box sx={{ position:'fixed', zIndex:1, width:'100%', padding: '0px 15px' }}>
+            <AppBar sx={{ borderRadius:'50px', display:'flex', justifyContent:'center', height: '50px', width:'100%' }} position="static">
                 <Toolbar>
                     <Box sx={{ display:'flex', alignItems:'center', flexGrow: 1 }}>
                         <IconButton
@@ -63,11 +65,11 @@ const Navbar = () => {
                         >
                             <MenuIcon onClick={toggleDrawer} sx={{ width:26, height:26 }}/>
                         </IconButton>
-                        <Typography onClick={backHome} variant="h5" component="div" sx={{ border:'1px solid', cursor:'pointer', fontFamily:'Montserrat', userSelect:'none', fontSize:'17px', padding:'5px 15px', borderRadius:'15px', transition: 'all 0.3s', '&:hover': { opacity: '0.5' } }}>
+                        <Typography onClick={backHome} variant="h5" component="div" sx={{ border:'1px solid', cursor:'pointer', fontFamily:'Montserrat', fontWeight:'400', userSelect:'none', fontSize:'17px', padding:'5px 15px', borderRadius:'15px' }}>
                             Dark Mall
                         </Typography>
                     </Box>
-                    <Typography omponent="div" sx={{ fontFamily:'Roboto Mono', mr: 1.5, fontSize:'16px', userSelect:'none', letterSpacing:'-1px' }}>
+                    <Typography omponent="div" sx={{ display: matches ? 'none' : 'block', fontFamily:'Roboto Mono', mr: 1.5, fontSize:'16px', userSelect:'none', letterSpacing:'-1px' }}>
                         {user?.name}
                     </Typography>
                     <Tooltip title="Account settings">

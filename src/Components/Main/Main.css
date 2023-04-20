@@ -1,4 +1,5 @@
 .main-wrap{
     height: 100vh;
+    overflow: auto;
 }
 
