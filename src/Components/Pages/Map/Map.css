@@ -1,9 +1,9 @@
 .map-wrap{
-    letter-spacing: 2px;
+    font-family: 'Roboto Mono';
+    font-weight: 200;
     font-size: 40px;
-    font-weight: bold;
-    height: calc(100% - 50px);    
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100vh;
 }

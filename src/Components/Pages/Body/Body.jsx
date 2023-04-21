@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 const Body = () => {
     return(
-        <div className='body-wrap'>
+        <div>
             <section className="intro-container">
                 <motion.div   
                     initial={{ opacity: 0, scale: 0.5 }}

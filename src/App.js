@@ -29,8 +29,8 @@ function App() {
         {user && <Navbar />}
         <Routes>
           {user && <Route path='/settings' element={<Settigns />} />}
-          {user &&<Route path='/profile' element={<Profile />} /> }
-          {user && <Route path='/' element={<Body />} /> }
+          {user && <Route path='/profile' element={<Profile />} /> }
+          {user && <Route path='/' element={<Body  />} /> }
           {user && <Route path='/map' element={<Map />} /> }
           {!user && <Route path='/auth' element={<Auth />} />}
           <Route path='*' element={<Error />} />
